@@ -463,41 +463,34 @@ function calculateStressLevel(tasks) {
 ### Screenshots
 
 #### 🏠 Landing Page 
-![Dashboard](aa.png)
-![Dashboard](bb.png)
-![Dashboard](cc.png)
+![Dashboard](img/aa.png)
+![Dashboard](img/bb.png)
+![Dashboard](img/cc.png)
 
-#### 🏠 Login/Register 
-![Dashboard](dd.png)
-![Dashboard](ee.png)
-
-#### 🏠 Dashboard
-![Dashboard](ff.png)
+#### 🧑‍💻 Login/Register 
+![Dashboard](img/dd.png)
+![Dashboard](img/ee.png)
 
 #### 🏥 Health Tracker
-![Dashboard](gg.png)
-![Dashboard](hh.png)
+![Dashboard](img/gg.png)
+![Dashboard](img/hh.png)
 
-
-#### 📅 Schedule + Stress Level
-![Dashboard](ii.jpeg)
-![Dashboard](jj.jpeg)
-
+#### 🗓️ Schedule + Stress Level
+![Dashboard](img/ii.jpeg)
+![Dashboard](img/jj.jpeg)
 
 #### 💰 Finance + OCR
-![Finance](kk.jpeg)
-![Finance](ll.jpeg)
-![Finance](mm.jpeg)
-![Finance](nn.jpeg)
-![Finance](oo.jpeg)
-![Finance](pp.jpeg)
-![Finance](qq.jpeg)
+![Finance](img/kk.jpeg)
+![Finance](img/ll.jpeg)
+![Finance](img/mm.jpeg)
+![Finance](img/nn.jpeg)
+![Finance](img/oo.jpeg)
+![Finance](img/pp.jpeg)
+![Finance](img/qq.jpeg)
 
-
-#### 💰 Profile
-![Profile](rr.png)
-![Profile](ss.png)
-
+#### 👤 Profile
+![Profile](img/rr.png)
+![Profile](img/ss.png)
 ---
 
 
