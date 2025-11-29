@@ -41,7 +41,7 @@ interface Expense {
   amount: number;
   merchant: string;
   category: ExpenseCategory;
-  date: string; // YYYY-MM-DD
+  date: string;
 }
 
 const CATEGORY_OPTIONS: ExpenseCategory[] = ["Food","Academic","Lifestyle","Transport","Others","Health","Entertainment"];
@@ -82,7 +82,6 @@ const Finance = () => {
     try {
       const res = await expensesAPI.getAll();
       const listRaw: any[] = (res?.data?.data ?? res?.data ?? []);
-      // normalize & dedupe by id or composite merchant|amount|date
       const seen = new Map<string, Expense>();
       const normalized = listRaw.map(normalizeExpense);
       for (const e of normalized) {
@@ -180,10 +179,43 @@ const Finance = () => {
           <Link to="/upload-receipt"><Button className="mt-2 md:mt-0 rounded-full bg-gradient-to-r from-wellness-pink to-wellness-rose text-white px-4 md:px-6"><Camera className="w-4 h-4 mr-2" />Smart Receipt Scanner</Button></Link>
         </motion.div>
 
+        {/* ✅ FIXED: Summary cards with inline style gradients */}
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 }} className="grid md:grid-cols-3 gap-4 mb-6">
-          <div className="card-wellness text-center bg-gradient-to-br from-wellness-teal/10 to-wellness-mint/10"><div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center"><Wallet className="w-6 h-6 text-white" /></div><p className="text-sm text-muted-foreground mb-1">This Month</p><p className="text-xl font-bold">{formatRupiah(thisMonthTotal)}</p><p className="text-xs text-muted-foreground mt-1">Total expenses</p></div>
-          <div className="card-wellness text-center bg-gradient-to-br from-wellness-orange/10 to-wellness-peach/10"><div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center"><TrendingDown className="w-6 h-6 text-white" /></div><p className="text-sm text-muted-foreground mb-1">Top Category</p><p className="text-xl font-bold">{topCategory.name}</p><p className="text-xs text-muted-foreground mt-1">{formatRupiah(topCategory.amount)}</p></div>
-          <div className="card-wellness text-center bg-gradient-to-br from-wellness-lavender/10 to-wellness-pink/10"><div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center"><PieChartIcon className="w-6 h-6 text-white" /></div><p className="text-sm text-muted-foreground mb-1">Daily Average</p><p className="text-xl font-bold">{formatRupiah(dailyAverage)}</p><p className="text-xs text-muted-foreground mt-1">Per day</p></div>
+          <div className="card-wellness text-center bg-gradient-to-br from-wellness-teal/10 to-wellness-mint/10">
+            <div 
+              className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg"
+              style={{ background: "linear-gradient(135deg, hsl(180, 55%, 70%) 0%, hsl(175, 60%, 75%) 100%)" }}
+            >
+              <Wallet className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-sm text-muted-foreground mb-1">This Month</p>
+            <p className="text-xl font-bold">{formatRupiah(thisMonthTotal)}</p>
+            <p className="text-xs text-muted-foreground mt-1">Total expenses</p>
+          </div>
+          
+          <div className="card-wellness text-center bg-gradient-to-br from-wellness-orange/10 to-wellness-peach/10">
+            <div 
+              className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg"
+              style={{ background: "linear-gradient(135deg, hsl(30, 90%, 70%) 0%, hsl(25, 85%, 80%) 100%)" }}
+            >
+              <TrendingDown className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-sm text-muted-foreground mb-1">Top Category</p>
+            <p className="text-xl font-bold">{topCategory.name}</p>
+            <p className="text-xs text-muted-foreground mt-1">{formatRupiah(topCategory.amount)}</p>
+          </div>
+          
+          <div className="card-wellness text-center bg-gradient-to-br from-wellness-lavender/10 to-wellness-pink/10">
+            <div 
+              className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg"
+              style={{ background: "linear-gradient(135deg, hsl(270, 55%, 80%) 0%, hsl(340, 75%, 70%) 100%)" }}
+            >
+              <PieChartIcon className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-sm text-muted-foreground mb-1">Daily Average</p>
+            <p className="text-xl font-bold">{formatRupiah(dailyAverage)}</p>
+            <p className="text-xs text-muted-foreground mt-1">Per day</p>
+          </div>
         </motion.div>
 
         {/* Filters & Add Form */}
