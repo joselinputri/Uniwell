@@ -40,12 +40,9 @@ const Dashboard = () => {
   });
   const [upcomingTasks, setUpcomingTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
-
-  // Expenses for dashboard summary
   const [expensesTotal, setExpensesTotal] = useState(0);
 
-  // ✅ Memoized fetch function to prevent dependency issues
+  // ✅ FIXED: Proper fetch function
   const fetchAllData = useCallback(async () => {
     let mounted = true;
     setLoading(true);
@@ -100,12 +97,21 @@ const Dashboard = () => {
       // Fetch upcoming tasks
       try {
         const tasksRes = await tasksAPI.getUpcoming();
+        console.log("📥 Raw tasks API response:", tasksRes?.data);
+        
         if (mounted && tasksRes?.data) {
           const taskData = tasksRes.data.data || tasksRes.data;
-          setUpcomingTasks(Array.isArray(taskData) ? taskData : []);
+          const tasks = Array.isArray(taskData) ? taskData : [];
+          console.log("✅ Dashboard loaded tasks:", tasks.length, "tasks", tasks);
+          setUpcomingTasks(tasks);
+        } else {
+          console.warn("⚠️ No tasks data received");
+          if (mounted) setUpcomingTasks([]);
         }
       } catch (err) {
-        console.warn("Failed to load tasks:", err);
+        console.error("❌ Failed to load tasks:", err);
+        // Set empty array on error to show "no tasks" message
+        if (mounted) setUpcomingTasks([]);
       }
 
       // Fetch expenses for dashboard summary
@@ -120,55 +126,59 @@ const Dashboard = () => {
     } finally {
       if (mounted) setLoading(false);
     }
+
+    return () => {
+      mounted = false;
+    };
   }, [navigate, toast]);
 
-  // Load data on mount and when refreshTrigger changes
+  // ✅ FIXED: Load data on mount
   useEffect(() => {
     fetchAllData();
-  }, [fetchAllData, refreshTrigger]);
+  }, [fetchAllData]);
 
-  // Auto-refresh every 30 seconds
+  // ✅ FIXED: Listen to global updates with proper cleanup
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRefreshTrigger(prev => prev + 1);
-    }, 30000);
+    const handleTasksUpdate = () => {
+      console.log("🔄 Tasks updated event received");
+      fetchAllData();
+    };
     
-    return () => clearInterval(interval);
-  }, []);
+    const handleExpensesUpdate = () => {
+      console.log("🔄 Expenses updated event received");
+      fetchAllData();
+    };
 
-  // Listen to global updates (tasks & expenses)
-  useEffect(() => {
-    const onTasksUpdated = () => fetchAllData();
-    const onExpensesUpdated = () => fetchAllData();
-    window.addEventListener("tasksUpdated", onTasksUpdated);
-    window.addEventListener("expensesUpdated", onExpensesUpdated);
+    window.addEventListener("tasksUpdated", handleTasksUpdate);
+    window.addEventListener("expensesUpdated", handleExpensesUpdate);
+
     return () => {
-      window.removeEventListener("tasksUpdated", onTasksUpdated);
-      window.removeEventListener("expensesUpdated", onExpensesUpdated);
+      window.removeEventListener("tasksUpdated", handleTasksUpdate);
+      window.removeEventListener("expensesUpdated", handleExpensesUpdate);
     };
   }, [fetchAllData]);
 
+  // ✅ FIXED: Quick stats with proper gradient backgrounds
   const quickStats = [
     {
       icon: Heart,
       label: "Health",
       value: loading ? "Loading..." : todayStats.mood ? "Logged" : "No data",
-      color: "from-green-400 to-emerald-500",
+      color: "from-wellness-pink to-wellness-rose",
       path: "/health",
     },
     {
       icon: Calendar,
       label: "Tasks",
       value: loading ? "Loading..." : `${upcomingTasks.length} Pending`,
-      color: "from-blue-400 to-cyan-500",
+      color: "from-wellness-sky to-wellness-mint",
       path: "/schedule",
     },
     {
       icon: Wallet,
       label: "Expenses",
-      // Show total on dashboard
       value: loading ? "Loading..." : formatRupiah(expensesTotal),
-      color: "from-orange-400 to-rose-500",
+      color: "from-wellness-orange to-wellness-rose",
       path: "/finance",
     },
   ];
@@ -256,19 +266,35 @@ const Dashboard = () => {
           </div>
         </motion.div>
 
-        {/* Quick Access Cards */}
+        {/* Quick Access Cards - FIXED GRADIENT BACKGROUNDS */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ delay: 0.3 }} 
           className="grid md:grid-cols-3 gap-4 mb-6"
         >
-          {quickStats.map((stat) => {
+          {quickStats.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <Link key={stat.label} to={stat.path}>
-                <motion.div whileHover={{ y: -4 }} className="card-wellness cursor-pointer">
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-3`}>
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  whileHover={{ y: -4, scale: 1.02 }} 
+                  className="card-wellness cursor-pointer"
+                >
+                  {/* ✅ FIXED: Proper gradient with inline style backup */}
+                  <div 
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-lg`}
+                    style={{
+                      background: stat.label === "Health" 
+                        ? "linear-gradient(135deg, hsl(340, 75%, 70%) 0%, hsl(350, 70%, 75%) 100%)"
+                        : stat.label === "Tasks"
+                        ? "linear-gradient(135deg, hsl(200, 70%, 80%) 0%, hsl(175, 60%, 75%) 100%)"
+                        : "linear-gradient(135deg, hsl(30, 90%, 70%) 0%, hsl(350, 70%, 75%) 100%)"
+                    }}
+                  >
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
