@@ -472,8 +472,9 @@ function calculateStressLevel(tasks) {
 ![Dashboard](img/ee.png)
 ----
 #### 🏥 Health Tracker
+![Dashboard](img/ff.png)
 ![Dashboard](img/gg.png)
-![Dashboard](img/hh.png)
+![Dashboard](img/hh.jpeg)
 ----
 #### 🗓️ Schedule + Stress Level
 ![Dashboard](img/ii.jpeg)
@@ -487,6 +488,7 @@ function calculateStressLevel(tasks) {
 ![Finance](img/oo.jpeg)
 ![Finance](img/pp.jpeg)
 ![Finance](img/qq.jpeg)
+![Finance](img/tt.jpeg)
 ----
 #### 👤 Profile
 ![Profile](img/rr.png)
