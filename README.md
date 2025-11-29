@@ -128,7 +128,7 @@ Expense: { userId, amount, merchant, category, date, receiptUrl }
 ### 1️⃣ Clone Repository
 ```bash
 git clone https://github.com/joselinputri/Uniwell.git
-cd uniwell-tracker
+cd Uniwell
 ```
 
 ### 2️⃣ Setup Backend
