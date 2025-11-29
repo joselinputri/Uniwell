@@ -478,22 +478,24 @@ function calculateStressLevel(tasks) {
 ----
 ## 🗓️ Schedule + Stress Level
 ![Dashboard](img/ii.jpeg)
-![Dashboard](img/jj.jpeg)
+![Dashboard](img/hmmm.png)
 ----
 ## 💰 Finance + OCR
-![Finance](img/kk.jpeg)
-![Finance](img/ll.jpeg)
-![Finance](img/mm.jpeg)
-![Finance](img/nn.jpeg)
-![Finance](img/tt.jpeg)
-![Finance](img/oo.jpeg)
+![Finance](img/ww.png)
+![Finance](img/www.png)
+![Finance](img/karaoke.png)
+![Finance](img/wwwww.png)
 ![Finance](img/pp.jpeg)
-![Finance](img/qq.jpeg)
+![Finance](img/final.png)
 ----
 ## 👤 Profile
 ![Profile](img/rr.png)
 ![Profile](img/ss.png)
 ---
+## 👤 Dashboard Final
+![Profile](img/well.png)
+
+
 
 
 ## 🔮 Future Roadmap
