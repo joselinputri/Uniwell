@@ -463,27 +463,44 @@ function calculateStressLevel(tasks) {
 ### Screenshots
 
 #### 🏠 Landing Page 
-![Dashboard](https://via.placeholder.com/800x500/FF6B9D/FFFFFF?text=Dashboard+Overview)
+<<<<<<< HEAD
+![Dashboard](aa.png)
+![Dashboard](bb.png)
+![Dashboard](cc.png)
 
 #### 🏠 Login/Register 
-![Dashboard](https://via.placeholder.com/800x500/FF6B9D/FFFFFF?text=Dashboard+Overview)
+![Dashboard](dd.png)
+![Dashboard](ee.png)
 
 #### 🏠 Dashboard
-![Dashboard](https://via.placeholder.com/800x500/FF6B9D/FFFFFF?text=Dashboard+Overview)
+![Dashboard](ff.png)
 
 #### 🏥 Health Tracker
-![Health](https://via.placeholder.com/800x500/9DDFB0/FFFFFF?text=Health+Check-in)
+![Dashboard](gg.png)
+![Dashboard](hh.png)
+
 
 #### 📅 Schedule + Stress Level
-![Schedule](https://via.placeholder.com/800x500/A8E6CF/FFFFFF?text=Smart+Schedule)
+![Dashboard](ii.jpeg)
+![Dashboard](jj.jpeg)
+
 
 #### 💰 Finance + OCR
-![Finance](https://via.placeholder.com/800x500/FFB6C1/FFFFFF?text=Smart+Finance)
+![Finance](kk.jpeg)
+![Finance](ll.jpeg)
+![Finance](mm.jpeg)
+![Finance](nn.jpeg)
+![Finance](oo.jpeg)
+![Finance](pp.jpeg)
+![Finance](qq.jpeg)
+
 
 #### 💰 Profile
-![Finance](https://via.placeholder.com/800x500/FFB6C1/FFFFFF?text=Smart+Finance)
+![Profile](rr.png)
+![Profile](ss.png)
 
 ---
+
 
 ## 🔮 Future Roadmap
 
