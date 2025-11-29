@@ -498,7 +498,6 @@ function calculateStressLevel(tasks) {
 ![Profile](rr.png)
 ![Profile](ss.png)
 
-
 ---
 
 ## 🔮 Future Roadmap
@@ -516,5 +515,4 @@ function calculateStressLevel(tasks) {
 ---
 
 ## 👥 Team
-
 **Putri Joselina Silitonga** - 
