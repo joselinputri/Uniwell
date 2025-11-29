@@ -466,19 +466,19 @@ function calculateStressLevel(tasks) {
 ![Dashboard](img/aa.png)
 ![Dashboard](img/bb.png)
 ![Dashboard](img/cc.png)
-
+----
 #### 🧑‍💻 Login/Register 
 ![Dashboard](img/dd.png)
 ![Dashboard](img/ee.png)
-
+----
 #### 🏥 Health Tracker
 ![Dashboard](img/gg.png)
 ![Dashboard](img/hh.png)
-
+----
 #### 🗓️ Schedule + Stress Level
 ![Dashboard](img/ii.jpeg)
 ![Dashboard](img/jj.jpeg)
-
+----
 #### 💰 Finance + OCR
 ![Finance](img/kk.jpeg)
 ![Finance](img/ll.jpeg)
@@ -487,7 +487,7 @@ function calculateStressLevel(tasks) {
 ![Finance](img/oo.jpeg)
 ![Finance](img/pp.jpeg)
 ![Finance](img/qq.jpeg)
-
+----
 #### 👤 Profile
 ![Profile](img/rr.png)
 ![Profile](img/ss.png)
